@@ -25,7 +25,7 @@ public class QuestionRepositoryAdapter implements QuestionRepository {
 			    "SELECT * FROM PT_QUESTIONS  ",
 			    new RowMapper<Question>() {
 			        public Question mapRow(ResultSet rs, int rowNum) throws SQLException {
-			        	Question c =  Question.builder().id(rs.getInt(1)).category(Category.hard_fact).build();
+			        	Question c =  Question.builder().id(rs.getInt("id")).question(rs.getString("QUESTION_JSON")).category(Category.valueOf(rs.getString("CATEGORY"))).build();
 			           
 			            return c;
 			        }

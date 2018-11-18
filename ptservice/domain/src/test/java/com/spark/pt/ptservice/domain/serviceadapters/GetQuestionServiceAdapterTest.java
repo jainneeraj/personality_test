@@ -41,14 +41,14 @@ public class GetQuestionServiceAdapterTest {
 	}
 	@Test
     public void getAllQuestions_whenThereAreSavedQuestions_returnsAPopulatedListOfQuestions() {
-		QuestionType  question_type = new QuestionType();
+		/*QuestionType  question_type = new QuestionType();
 		question_type.setType("single_choice");
 		List<String> options = new ArrayList<String>();
 		options.add("male");
 		options.add("female");
 		options.add("other");
-		question_type.setOptions(options);
-        Question q1 = Question.builder().category(Category.hard_fact).question("What is your gender?").question_type(question_type).build();
+		question_type.setOptions(options);*/
+        Question q1 = Question.builder().id(1).category(Category.valueOf("hard_fact")).question("What is your gender?").build();
        
         List<Question> savedQuestions = new ArrayList<Question>();
         savedQuestions.add(q1);

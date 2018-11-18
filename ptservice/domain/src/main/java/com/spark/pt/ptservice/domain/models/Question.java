@@ -11,7 +11,8 @@ public class Question {
 	private String question ;
 	private int id;
 	private Category category ;
-	private QuestionType question_type;
+	private String answer;
+	//private QuestionType question_type;
 	
 	
 }
