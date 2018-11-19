@@ -1,19 +1,22 @@
 import React from 'react';
-import data from '../database/data';
+import axios from 'axios';
 import Answers from './Answers';
 import Popup from './Popup';
 import Footer from './Footer';
-
+const API_CALL =  "http://localhost:8180/ptservice/questions";
 class Main extends React.Component {
+    //            total: data.length,
+
     constructor(props) {
         super(props);
         this.state = {
             nr: 0,
-            total: data.length,
+             loading:true,
             showButton: false,
             questionAnswered: false,
             score: 0,
-            displayPopup: 'flex'
+            displayPopup: 'flex',
+            data:[]
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
@@ -22,17 +25,27 @@ class Main extends React.Component {
     }
 
     pushData(nr) {
+        alert("d"+nr+ this.state)
         this.setState({
-            question: data[nr].question,
-            answers: [data[nr].answers[0], data[nr].answers[1], data[nr].answers[2], data[nr].answers[3] ],
-            correct: data[nr].correct,
+            questions: this.state.data[nr],
+            answers: [this.state.data[nr].category, this.state.data[nr].category],
+             correct :'b',
+            //correct: data[nr].correct,
             nr: this.state.nr + 1
         });
     }
-
+   
     componentWillMount() {
-        let { nr } = this.state;
-        this.pushData(nr);
+        //let { nr } = this.state;
+        //this.pushData(nr);
+        
+        axios.get(`http://localhost:8180/ptservice/questions`)
+      .then(res => {
+          alert(res.data);
+          console.log(res.data);
+        const data = res.data;
+        this.setState({ data,loading:false });
+      }).then(this.pushData(this.state.nr))
     }
 
     nextQuestion() {
@@ -76,6 +89,8 @@ class Main extends React.Component {
         let { nr, total, question, answers, correct, showButton, questionAnswered, displayPopup, score} = this.state;
 
         return (
+
+            !this.state.loading &&
             <div className="container">
 
                 <Popup style={{display: displayPopup}} score={score} total={total} startQuiz={this.handleStartQuiz}/>
