@@ -30,11 +30,11 @@ class Popup extends React.Component {
         }
     }
     
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            text: 'You have completed the quiz. <br /> You got: <strong>' + this.props.score + '</strong> out of <strong>' +this.props.total +'</strong> questions right.'
-        })
-    }
+    //componentWillReceiveProps(nextProps) {
+      //  this.setState({
+        //    text: 'You have completed the quiz. <br /> You got: <strong>' + this.props.score + '</strong> out of <strong>' +this.props.total +'</strong> questions right.'
+        //})
+    //}
     
     createMarkup(text) {
         return {__html: text};
