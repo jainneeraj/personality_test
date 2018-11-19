@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Grid, Col, Row, Media,Radio } from "react-bootstrap";
 import axios from 'axios';
 const API_CALL =  "http://localhost:8180/ptservice/questions";
 
@@ -44,7 +44,7 @@ class Exam extends React.Component {
      
           {!isLoading ? (
           
-          questions.map(function(ques,i) {
+          questions.map((ques,index)=> {
             console.log(ques)
             let   qData=JSON.parse(ques.question);
             console.log(qData.question_type)
@@ -58,12 +58,13 @@ class Exam extends React.Component {
 
                 }
                       {
-
-qData.question_type.options.map(function(options,i){
+qData.question_type.options.map(function(option,index){
                           return (
                             <div className="radio">
                             <label>
-                                <input type="radio" name="optionsRadios"/>{options}
+                            
+      
+                                <input type="radio" name={"radio"+ques.id} />{option}
                                 </label>
                             </div>
                           )
