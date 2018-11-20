@@ -21,7 +21,7 @@ class App extends Component {
       answersCount: {
         Nintendo: 0,
         Microsoft: 0,
-        Sony: 0
+        Sony: 0 
       },
       result: ''
     };
@@ -139,9 +139,9 @@ class App extends Component {
       <Quiz
         answer={this.state.answer}
         answerOptions={this.state.answerOptions}
-        questionId={this.state.questionId}
+        questionId={this.state.questionId} 
         question={this.state.question}
-        questionTotal={quizQuestions.length}
+        questionTotal={this.state.questions.length}
         onAnswerSelected={this.handleAnswerSelected}
       />
     );
